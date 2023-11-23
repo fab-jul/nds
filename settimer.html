@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage Timer</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        body {
+            background-image: url('./synth_bg.jpg');
+            /* opacity: 0.5; */
+        }
+
+        .teaser {
+            max-width: 100%;
+        }
+
+        .marker {
+            width: 100%;
+            color: white;
+            background-color: #4d0b58;
+            padding: 5px;
+
+            /* line-height: 2; */
+        }
+
+        .marker-light {
+            width: 100%;
+            color: #4d0b58;
+            background-color: white;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            margin: 0 auto;
+            /* margin: 20px; */
+        }
+
+        .central-column {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        a,
+        a:hover,
+        a:active,
+        a:visited {
+            color: white;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            height: 50px;
+            /* Adjust this value to change the button height */
+            line-height: 50px;
+            /* Adjust this value to match the button height */
+            text-align: center;
+            border: none;
+            background-color: #982aac;
+            margin-top: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input {
+            display: block;
+            width: 100%
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="central-column">
+            <h1 class="marker">Set Timer</h1>
+            <div class="stage-container">
+                <h2 class="marker">Stages</h2>
+                <input type="text" id="stage-input" value="atonal, tonal">
+            </div>
+
+            <div class="time-container">
+                <h2 class="marker">Time per Stage</h2>
+                <input type="number" id="time-input" value="5">
+                <p class="marker-light">(minutes)</p>
+            </div>
+
+            <div id="timer-display"></div>
+            <button id="toggle-button">toggle</button>
+
+            <div id="while-running">
+                <p class="marker-light" id="total-display"></p>
+                <p class="marker-light" id="time-display"></p>
+                <p class="marker-light" id="current-stage-display"></p>
+                <button id="stay-button">+1m</button>
+                <button id="next-button">Next</button>
+            </div>
+            <script src="settimer.js"></script>
+        </div>
+    </div>
+
+</body>
+
+</html>
