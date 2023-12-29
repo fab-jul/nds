@@ -1,0 +1,51 @@
+body {
+font-family: sans-serif;
+}
+
+body {
+background-image: url('./synth_bg.jpg');
+/* opacity: 0.5; */
+}
+
+.logo {
+max-width: 50%;
+-webkit-filter: drop-shadow(2px 2px 0 white)
+            drop-shadow(-2px 2px 0 white)
+            drop-shadow(2px -2px 0 white)
+            drop-shadow(-2px -2px 0 white);
+
+filter: drop-shadow(2px 2px 0 white)
+        drop-shadow(-2px 2px 0 white)
+        drop-shadow(2px -2px 0 white)
+        drop-shadow(-2px -2px 0 white);
+}
+
+.teaser {
+max-width: 100%;
+}
+
+.marker {
+color: white;
+background-color: #4d0b58;
+padding: 5px;
+
+line-height: 2;
+}
+
+.wrapper {
+width: 100%;
+margin: 0 auto;
+/* margin: 20px; */
+}
+
+.central-column {
+max-width: 500px;
+margin: 0 auto;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+color: white;
+}
