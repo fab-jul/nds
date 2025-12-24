@@ -1,82 +1,369 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Nero Di Seppia Modular</title>
-  <link rel="stylesheet" href="style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2600754520156484"
-     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Minimal Techno Artist Portfolio">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>NERO DI SEPPIA</title>
+
+  <!-- Importing Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* --- CSS VARIABLES & RESET --- */
+    :root {
+      --color-bg: #0a0a0a;
+      --color-text-main: #e0e0e0;
+      --color-text-muted: #888888;
+      --color-accent: #9D4EDD;
+      /* Electric Purple */
+
+      --font-main: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding: 2rem 1rem;
+    }
+
+    /* --- TYPOGRAPHY --- */
+    h1 {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      border-bottom: 2px solid var(--color-accent);
+      padding-bottom: 5px;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--color-text-main);
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section-spacer {
+      margin-bottom: 5rem;
+    }
+
+    /* --- HEADER --- */
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .genre-tag {
+      font-family: var(--font-mono);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    /* --- MAIN SECTION --- */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .social-links a {
+      position: relative;
+    }
+
+    .social-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+
+    .social-links a:hover::after {
+      width: 100%;
+    }
+
+    /* --- SOUNDCLOUD TINTED EMBED STYLES --- */
+    .soundcloud-embed-container {
+      position: relative;
+      /* Needed for the overlay positioning */
+      width: 100%;
+      border: 1px solid #222;
+      padding: 5px;
+      background: #000;
+      overflow: hidden;
+      /* Ensures the overlay doesn't spill out */
+    }
+
+    .soundcloud-embed-container iframe {
+      width: 100%;
+      height: 166px;
+      border: none;
+      display: block;
+      /* Slight grayscale on the actual iframe helps the purple tint look cleaner */
+      filter: grayscale(70%);
+      transition: filter 0.5s ease;
+    }
+
+    /* The purple tint overlay */
+    .embed-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-accent);
+      /* The purple color */
+
+      /* This blend mode applies the purple color to the content below it */
+      mix-blend-mode: hard-light;
+      opacity: 0.8;
+      /* Adjust intensity of the purple */
+
+      /* CRITICAL: makes clicks pass through the overlay to the play button */
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Hover effect: reveal true colors */
+    .soundcloud-embed-container:hover .embed-overlay {
+      opacity: 0;
+    }
+
+    .soundcloud-embed-container:hover iframe {
+      filter: grayscale(0%);
+    }
+
+    /* --- NEW IMAGE SECTION STYLES --- */
+    .artist-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #222;
+      padding: 5px;
+      /* Start muted and slightly desaturated */
+      filter: grayscale(80%) brightness(80%);
+      transition: all 0.5s ease;
+    }
+
+    /* Hover: reveal full color and add purple border glow */
+    .artist-image-container img:hover {
+      filter: grayscale(0%) brightness(100%);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+      /* Subtle purple glow */
+    }
+
+    /* --- NEW IMAGE SECTION STYLES --- */
+    .artist-image-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #222;
+      padding: 5px;
+      /* Start muted and slightly desaturated */
+      filter: grayscale(80%) brightness(80%);
+      transition: all 0.5s ease;
+    }
+
+    /* Hover: reveal full color and add purple border glow */
+    .artist-image-container img:hover {
+      filter: grayscale(0%) brightness(100%);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+      /* Subtle purple glow */
+    }
+
+
+    /* --- GIGS SECTION --- */
+    .gigs-list {
+      list-style: none;
+    }
+
+    .gig-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #222;
+      font-family: var(--font-mono);
+    }
+
+    @media (min-width: 600px) {
+      .gig-item {
+        grid-template-columns: 150px 1fr;
+        align-items: baseline;
+      }
+    }
+
+    .gig-date {
+      color: var(--color-text-muted);
+      font-weight: bold;
+    }
+
+    .gig-details {
+      font-size: 1.1rem;
+    }
+
+    .gig-location {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--color-accent);
+      margin-top: 4px;
+    }
+
+    .external-link {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 6rem;
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="wrapper">
-    <div class="central-column">
+  <div class="container">
 
-      <img src="logo/logo.png" class="logo" title="Logo by Luisa &lt;3"></img>
+    <!-- Header -->
+    <header>
+      <h1>NERO DI SEPPIA</h1>
+      <p class="genre-tag">IMPROVISED &#8729; RAW &#8729; HYPNOTIC</p>
+    </header>
 
-      <h1 class="title"><span class="marker">Nero Di Seppia Modular</span></h1>
-      <p>
-        <span class="marker">
-          I make music with a modular synthesizer. Mostly techno.
-        </span>
-      </p>
-      <p>
-        <span class="marker"><a href="https://www.youtube.com/@nero_di_seppia">YouTube</a></span>
-        |
-        <span class="marker"><a href="https://soundcloud.com/nerodiseppia">SoundCloud</a></span>
-        |
-        <span class="marker"><a href="https://open.spotify.com/artist/73tipRBJnZt9offfEjRdI4">Spotify</a></span>
-        <!-- |
-        <span class="marker">
-          <emph>
-          <a href="https://untitled.stream/library/project/xfqZjcVXKphj85ODRJixv">[UNRELEASED]</a></span>
-          </emph> -->
-      </p>
-      <p>
-        <span class="marker">
-          Current case, on ModularGrid: <a href="https://modulargrid.net/e/users/view/221246">check my profile here</a> 🎛️ 
-        </span>
-      </p>
-      <p>
-        <span class="marker">
-          <script>
-            var user = "fabianjul+nds";
-            var domain = "gmail.com";
-            document.write('<a href="mailto:' + user + '@' + domain + '">' + 'E-Mail me here' + '</a>');
-          </script>
-        </span>
-      </p>
-      <img class="teaser" src="./synth.jpg" alt="Nero Di Seppia Modular">
-      <!-- <p>
-        <span class="marker">Gigs</span>
-        <span class="marker">
-          May 27th,
-          September 3rd,
-          September 17th,
-          September 22nd,
-          Nov 10th
-        </span>
-      </p> -->
+    <main class="section-spacer">
+      <nav class="social-links">
+        <a href="https://www.youtube.com/@nero_di_seppia" target="_blank">YouTube</a>
+        <span>/</span>
+        <a href="https://soundcloud.com/nerodiseppia" target="_blank">SoundCloud</a>
+        <span>/</span>
+        <a href="https://www.instagram.com/nero_di_seppia_modular" target="_blank">Instagram</a>
+      </nav>
 
-      <!-- <p>
-        <span class="marker">Set Notes</span>
-        <span class="marker">
-          <a href="setnotes/lp05.html">LP05</a>
-        </span>
-      </p> -->
+      <!-- SoundCloud Embed Container -->
+      <div class="soundcloud-embed-container">
+        <!-- Paste Iframe Here -->
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2231525222&color=%239d4edd&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+        <div
+          style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+          <a href="https://soundcloud.com/nerodiseppia" title="Nero Di Seppia" target="_blank"
+            style="color: #cccccc; text-decoration: none;">Nero Di Seppia</a> · <a
+            href="https://soundcloud.com/nerodiseppia/ohmforce-bohm-and-dfam-7" title="Ohmforce BOHM and DFAM // #7"
+            target="_blank" style="color: #cccccc; text-decoration: none;">Ohmforce BOHM and DFAM // #7</a>
+        </div>
 
-      <p>
-        <span class="marker">Helpers</span>
-        <span class="marker">
-                <a href="./settimer.html">Set Timer</a> 
-        </span>
-      </p>
+        <!-- The Tint Overlay Layer -->
+        <div class="embed-overlay"></div>
+      </div>
+    </main>
 
-    </div>
+    <!-- Events -->
+    <section id="gigs" class="section-spacer">
+
+      <h2>EVENTS</h2>
+
+      <ul class="gigs-list">
+        <li class="gig-item">
+          <span class="gig-date">18.12.25</span>
+          <div class="gig-details">
+            Kellermusig
+            <span class="gig-location">Umbo <emph><a href="https://www.umbo.wtf/event/kellermusig">Info</a></emph>
+            </span>
+          </div>
+        </li>
+        <li class="gig-item">
+          <span class="gig-date">23.11.25</span>
+          <div class="gig-details">
+            Kurzschluss Meet Up and Improv
+            <span class="gig-location">KuBaA</span>
+          </div>
+        </li>
+        <li class="gig-item">
+          <span class="gig-date">03.11.24</span>
+          <div class="gig-details">
+            Kellermusig
+            <span class="gig-location">QZ Wiedikon</span>
+          </div>
+        </li>
+        <li class="gig-item">
+          <span class="gig-date">02.03.24</span>
+          <div class="gig-details">
+            Modular / DJ Night
+            <span class="gig-location">Busch</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section-spacer">
+      <h2>CONTACT</h2>
+      <div>
+        You can contact me on <a class="external-link"
+          href="https://www.instagram.com/nero_di_seppia_modular">Instagram</a>.
+      </div>
+    </section>
+
+    <!-- Image -->
+    <section class="section-spacer artist-image-container">
+      <img src="./synth_crop.jpg" alt="Artist press photo">
+    </section>
+
+    <footer>
+      <p>© 2025 Nero Di Seppia. All rights reserved.</p>
+    </footer>
+
   </div>
-
 
 </body>
 
